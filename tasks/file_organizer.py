@@ -1,10 +1,12 @@
-Task: organize_files
+"""Task: organize_files.
+
 Автоматическое распределение файлов по папкам по расширению.
 """
+
 import os
 import shutil
-from core.task_registry import TaskRegistry, BaseTask
 from core.config import DIRS, FILE_ROUTING
+from core.task_registry import BaseTask, TaskRegistry
 
 
 @TaskRegistry.register("organize_files")
@@ -16,9 +18,8 @@ class FileOrganizerTask(BaseTask):
         moved = []
         skipped = []
 
-        # 👇 Вот куда автофиксер ДОЛЖЕН был вставить эту проверку (внутри метода run)
         if not source_dir or not isinstance(source_dir, str):
-            return {'status': 'error', 'message': 'Invalid source directory'}
+            return {"status": "error", "message": "Invalid source directory"}
 
         if not os.path.isdir(source_dir):
             return {"status": "error", "message": f"Directory not found: {source_dir}"}
@@ -45,4 +46,4 @@ class FileOrganizerTask(BaseTask):
             "moved": moved,
             "skipped": skipped,
             "total_moved": len(moved),
-}
+        }
