@@ -1,4 +1,3 @@
-cat << 'EOF' > ml/pipeline.py
 """ML Module — Self-Learning Pipeline.
 
 Поддерживает: обучение на текстах, молекулярных данных (mol/RDKit), CSV-датасетах.
@@ -112,4 +111,3 @@ class MolMLPipeline:
         with open(path, "wb") as f:
             pickle.dump(self.model, f)  # nosec
         return path
-EOF
