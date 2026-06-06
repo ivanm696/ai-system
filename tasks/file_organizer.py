@@ -1,4 +1,3 @@
-"""
 Task: organize_files
 Автоматическое распределение файлов по папкам по расширению.
 """
@@ -16,6 +15,10 @@ class FileOrganizerTask(BaseTask):
         source_dir = input_data.get("source_dir", "download")
         moved = []
         skipped = []
+
+        # 👇 Вот куда автофиксер ДОЛЖЕН был вставить эту проверку (внутри метода run)
+        if not source_dir or not isinstance(source_dir, str):
+            return {'status': 'error', 'message': 'Invalid source directory'}
 
         if not os.path.isdir(source_dir):
             return {"status": "error", "message": f"Directory not found: {source_dir}"}
@@ -42,4 +45,4 @@ class FileOrganizerTask(BaseTask):
             "moved": moved,
             "skipped": skipped,
             "total_moved": len(moved),
-        }
+}
