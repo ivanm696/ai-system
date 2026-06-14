@@ -1,3 +1,1 @@
-spec = importlib.util.spec_from_file_location('tasks.doc_generator', 'tasks/doc_generator.py')
-tasks.doc_generator = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(tasks.doc_generator)
+import tasks.doc_generator
