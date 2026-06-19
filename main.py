@@ -1,3 +1,1 @@
-spec = importlib.util.spec_from_file_location('tasks.doc_generator', 'tasks/doc_generator.py')
-tasks.doc_generator = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(tasks.doc_generator)
+spec = importlib.util.spec_from_file_location('tasks.doc_generator', 'tasks/doc_generator.py'); if spec.origin is None or not spec.origin.startswith('/path/to/trusted/modules/'): raise ImportError('Invalid module path')
