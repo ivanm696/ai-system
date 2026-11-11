@@ -3,56 +3,89 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Research Portal</title>
+<title>AI Self-Learning System — Research Portal</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: system-ui, sans-serif; color: #1a1a2e; background: #f8f8fc; line-height: 1.5; }
-  header { background: #4A3FAA; color: #fff; padding: 1.5rem 2rem; }
-  header h1 { font-size: 1.8rem; }
-  nav { background: #4A3FAAdd; display: flex; gap: 1.5rem; padding: .6rem 2rem; }
-  nav a { color: #fff; text-decoration: none; font-size: .95rem; opacity: .85; }
-  nav a:hover { opacity: 1; text-decoration: underline; }
-  main { max-width: 860px; margin: 2rem auto; padding: 0 1.5rem; }
-  section { background: #fff; border-radius: 12px; padding: 1.8rem 2rem;
-             margin-bottom: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,.07); }
-  section h2 { color: #4A3FAA; margin-bottom: 1rem; font-size: 1.3rem; }
-  ul { padding-left: 1.2rem; }
+  body { font-family: system-ui, -apple-system, sans-serif; color: #1e1e2f; background: #f4f4f9; line-height: 1.6; }
+  header { background: #2d2b55; color: #fff; padding: 2rem; text-align: center; }
+  header h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+  header p { opacity: 0.85; font-size: 1.1rem; }
+  nav { background: #3f3d7a; display: flex; justify-content: center; gap: 2rem; padding: 0.8rem; }
+  nav a { color: #fff; text-decoration: none; font-weight: 500; }
+  nav a:hover { text-decoration: underline; }
+  main { max-width: 900px; margin: 2rem auto; padding: 0 1.5rem; }
+  section { background: #fff; border-radius: 8px; padding: 2rem; margin-bottom: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+  section h2 { color: #2d2b55; margin-bottom: 1rem; font-size: 1.4rem; border-bottom: 2px solid #f4f4f9; padding-bottom: 0.5rem; }
+  ul { padding-left: 1.5rem; }
   li { margin-bottom: 0.5rem; }
-  footer { text-align: center; padding: 1.5rem; color: #888; font-size: 0.85rem; }
+  code { background: #f0f0f5; padding: 0.2rem 0.4rem; border-radius: 4px; font-family: monospace; font-size: 0.9rem; color: #d63384; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
+  .card { background: #fafafa; border: 1px solid #e1e1e8; border-radius: 6px; padding: 1rem; }
+  .card h3 { font-size: 1rem; color: #3f3d7a; margin-bottom: 0.3rem; }
+  footer { text-align: center; padding: 2rem; color: #777; font-size: 0.85rem; }
+  @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
+
 <header>
-    <h1>AI Research Portal</h1>
+    <h1>AI Self-Learning System</h1>
+    <p>Автономная модульная платформа на Python с реестром задач и ML-пайплайнами</p>
 </header>
+
 <nav>
-    <a href="#about">О проекте</a>
-    <a href="#features">Возможности</a>
-    <a href="#contact">Контакты</a>
+    <a href="#about">Архитектура</a>
+    <a href="#tasks">Задачи</a>
+    <a href="#ml">Модули ML</a>
+    <a href="#repo">Репозиторий</a>
 </nav>
+
 <main>
     <section id="about">
-        <h2>О проекте</h2>
-        <p><strong>AI Self-Learning System</strong> — это модульная платформа на Python, предназначенная для автоматизации задач машинного обучения, обработки данных и формирования отчетности. Система построена на базе гибкого реестра плагинов (TaskRegistry) и полностью протестирована с помощью автоматических CI/CD пайплайнов.</p>
+        <h2>О системе</h2>
+        <p>Независимая система с расширяемой архитектурой плагинов на базе <code>TaskRegistry</code>. Предназначена для комплексной автоматизации: генерации отчетности со служебными штампами, обработки файлов и запуска алгоритмов машинного обучения.</p>
     </section>
-    
-    <section id="features">
-        <h2>Возможности</h2>
+
+    <section id="tasks">
+        <h2>Реестр задач (TaskRegistry)</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>generate_pdf</h3>
+                <p>Создание PDF-документов с разметкой, структурой и защитным штампом.</p>
+            </div>
+            <div class="card">
+                <h3>organize_files</h3>
+                <p>Автоматическая сортировка файлов по директориям (docs, code, data, models).</p>
+            </div>
+            <div class="card">
+                <h3>train / predict text</h3>
+                <p>Обучение классификаторов и инференс текстовых данных (TF-IDF + Random Forest).</p>
+            </div>
+            <div class="card">
+                <h3>train / predict mol</h3>
+                <p>Молекулярный анализ химических соединений по SMILES через RDKit.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="ml">
+        <h2>Пайплайны и Инфраструктура</h2>
         <ul>
-            <li><strong>Текстовый ML:</strong> Классификация текстов с помощью векторизатора TF-IDF и модели Random Forest.</li>
-            <li><strong>Молекулярный анализ:</strong> Регрессионный анализ химических соединений (SMILES) с использованием дескрипторов RDKit.</li>
-            <li><strong>Генерация отчетов:</strong> Автоматическое создание структурированных PDF-документов с помощью библиотеки ReportLab.</li>
-            <li><strong>Архитектура плагинов:</strong> Удобная регистрация и выполнение новых задач через декораторы.</li>
+            <li><strong>Ядро:</strong> Модульная структура в директории <code>core/</code> с гибкой обработкой исключений и конфигураций.</li>
+            <li><strong>Генерация отчетов:</strong> Использование ReportLab для сборки PDF с кастомными визуальными метками.</li>
+            <li><strong>CI/CD:</strong> Автоматизированное тестирование через GitHub Actions (18+ проходящих тестов).</li>
         </ul>
     </section>
-    
-    <section id="contact">
-        <h2>Контакты</h2>
-        <p>Репозиторий проекта на GitHub: <a href="https://github.com/ivanm696/ai-system" target="_blank">github.com/ivanm696/ai-system</a></p>
+
+    <section id="repo">
+        <h2>Исходный код</h2>
+        <p>Проект полностью открыт. Репозиторий на GitHub: <a href="https://github.com/ivanm696/ai-system" target="_blank">github.com/ivanm696/ai-system</a></p>
     </section>
 </main>
+
 <footer>
-    Generated by AI Self-Learning System · 2026
+    AI Self-Learning System · Powered by TaskRegistry & RDKit · 2026
 </footer>
+
 </body>
 </html>
